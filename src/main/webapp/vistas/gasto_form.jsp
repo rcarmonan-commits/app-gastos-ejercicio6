@@ -70,7 +70,7 @@
             
             <div class="form-group" style="margin-top: 1rem;">
                 <label>Valor Total (Con IVA)</label>
-                <input type="text" id="valorTotalConIva" readonly style="background-color: #334155; font-weight: bold; cursor: not-allowed; font-size: 1.1rem; color: #10b981;" value="<%= esEdicion ? String.format(\"%.2f\", gasto.getValorTotalSinIVA() + gasto.getIvaTotal()) : \"0.00\" %>">
+                <input type="text" id="valorTotalConIva" readonly style="background-color: #334155; font-weight: bold; cursor: not-allowed; font-size: 1.1rem; color: #10b981;" value="<%= esEdicion ? String.format("%.2f", gasto.getValorTotalSinIVA() + gasto.getIvaTotal()) : "0.00" %>">
                 <small style="color: #94a3b8; font-size: 0.85rem; display: block; margin-top: 0.25rem;">Se calcula automáticamente.</small>
             </div>
             
