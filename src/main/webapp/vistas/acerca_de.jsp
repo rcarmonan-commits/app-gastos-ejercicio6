@@ -42,6 +42,17 @@
                 <li><strong>Diseño:</strong> Interfaz agradable y responsiva desarrollada con CSS Puro (Vanilla CSS), <strong>sión utilizar Bootstrap ni frameworks de frontend</strong>.</li>
             </ul>
 
+            <h2 style="color: var(--secondary-color); margin-top: 30px;">Información de Despliegue y Acceso</h2>
+            <ul>
+                <li><strong>URL del Repositorio (Git):</strong> <a href="https://github.com/rcarmonan-commits/app-gastos-ejercicio6.git" target="_blank">https://github.com/rcarmonan-commits/app-gastos-ejercicio6.git</a></li>
+                <li><strong>URL del Despliegue (App en Vivo):</strong> <a href="http://app-gastos-ejercicio6.alwaysdata.net/" target="_blank">http://app-gastos-ejercicio6.alwaysdata.net/</a></li>
+                <li><strong>Motor de Base de Datos:</strong> MariaDB 11.4 (Compatible con MySQL)</li>
+                <li><strong>Servidor de Base de Datos (Host):</strong> <code>mysql-app-gastos-ejercicio6.alwaysdata.net</code></li>
+                <li><strong>Usuario MySQL:</strong> <code>app-gastos-eje_6</code></li>
+                <li><strong>Clave MySQL:</strong> <code>R7512510045</code></li>
+                <li><strong>Nombre de la Base de Datos:</strong> <code>app-gastos-ejercicio6_db</code></li>
+            </ul>
+
             <h2 style="color: var(--secondary-color); margin-top: 30px;">Estructura del Proyecto</h2>
             <ul>
                 <li><code>src/main/java/modelo/</code>: Entidades POJO y lógica DAO (CRUDUsuario, CRUDGasto, CRUDConfiguracionSMTP).</li>
