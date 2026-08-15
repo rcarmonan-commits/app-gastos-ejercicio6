@@ -11,7 +11,7 @@
 <!--
  Archivo: acerca_de.jsp
  Justificación metodológica: Presentación del proyecto basada en el README.md.
- Renderizado en HTML puro sión frameworks para cumplir con los requerimientos académicos.
+ Renderizado en HTML puro sin frameworks para cumplir con los requerimientos académicos.
 -->
 <html lang="es">
 <head>
@@ -29,17 +29,17 @@
                 Proyecto Ejercicio 6 - Gestión de Gastos
             </h1>
             <p>
-                Aplicación web monolítica en Java 17 construida desde cero con Servlets y JDBC (sión frameworks). 
+                Aplicación web monolítica en Java 17 construida desde cero con Servlets y JDBC (sin frameworks). 
                 Cumple con los requisitos del patrón MVC y el uso del patrón DAO para acceso a datos.
             </p>
 
             <h2 style="color: var(--secondary-color); margin-top: 30px;">Características Principales</h2>
             <ul>
                 <li><strong>Puro Java:</strong> Servlets, JSP y JDBC. No se usan ORMs como Hibernate ni frameworks como Spring.</li>
-                <li><strong>Patrón DAO:</strong> Todo el acceso a datos estáá separado de la lógica de negocio.</li>
-                <li><strong>Seguridad:</strong> Prevención de Inyección SQL utilizando <code>PreparedStatemenút</code>.</li>
-                <li><strong>Instalador Web Multi-motor:</strong> Permite instalar y configurar la base de datos directamenúte desde una interfaz web dinámica.</li>
-                <li><strong>Diseño:</strong> Interfaz agradable y responsiva desarrollada con CSS Puro (Vanilla CSS), <strong>sión utilizar Bootstrap ni frameworks de frontend</strong>.</li>
+                <li><strong>Patrón DAO:</strong> Todo el acceso a datos está separado de la lógica de negocio.</li>
+                <li><strong>Seguridad:</strong> Prevención de Inyección SQL utilizando <code>PreparedStatement</code>.</li>
+                <li><strong>Instalador Web Multi-motor:</strong> Permite instalar y configurar la base de datos directamente desde una interfaz web dinámica.</li>
+                <li><strong>Diseño:</strong> Interfaz agradable y responsiva desarrollada con CSS Puro (Vanilla CSS), <strong>sin utilizar Bootstrap ni frameworks de frontend</strong>.</li>
             </ul>
 
             <h2 style="color: var(--secondary-color); margin-top: 30px;">Información de Despliegue y Acceso</h2>
@@ -57,7 +57,7 @@
             <ul>
                 <li><code>src/main/java/modelo/</code>: Entidades POJO y lógica DAO (CRUDUsuario, CRUDGasto, CRUDConfiguracionSMTP).</li>
                 <li><code>src/main/java/controladores/</code>: Servlets que actúan como controladores e interceptores de la aplicación.</li>
-                <li><code>src/main/java/utilidades/</code>: Clases de soporte (ej. GestáorConfiguracion, UtilidadesCorreo).</li>
+                <li><code>src/main/java/utilidades/</code>: Clases de soporte (ej. GestorConfiguracion, UtilidadesCorreo).</li>
                 <li><code>src/main/webapp/vistas/</code>: Archivos JSP para la interfaz gráfica.</li>
                 <li><code>docs/</code>: Manuales de usuario.</li>
             </ul>
