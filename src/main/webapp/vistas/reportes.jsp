@@ -60,8 +60,8 @@
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>Seleccione el Rol</label>
                         <select name="rol" required style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #475569; background: #0f172a; color: white;">
-                            <option value="Admin">Admin</option>
-                            <option value="Usuario">Usuario</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Operador">Operador</option>
                         </select>
                     </div>
                     <button type="submit" class="btn-primary">Filtrar por Rol</button>
