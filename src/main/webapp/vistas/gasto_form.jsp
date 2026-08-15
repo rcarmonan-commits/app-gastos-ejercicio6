@@ -68,7 +68,13 @@
                 </div>
             </div>
             
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 1rem;">
+                <label>Valor Total (Con IVA)</label>
+                <input type="text" id="valorTotalConIva" readonly style="background-color: #334155; font-weight: bold; cursor: not-allowed; font-size: 1.1rem; color: #10b981;" value="<%= esEdicion ? String.format(\"%.2f\", gasto.getValorTotalSinIVA() + gasto.getIvaTotal()) : \"0.00\" %>">
+                <small style="color: #94a3b8; font-size: 0.85rem; display: block; margin-top: 0.25rem;">Se calcula automáticamente.</small>
+            </div>
+            
+            <div class="form-group" style="margin-top: 1rem;">
                 <label>Lugar de la Compra</label>
                 <input type="text" name="lugar" value="<%= esEdicion ? gasto.getLugar() : "" %>" placeholder="Ej: Éxito, D1, Restaurante" required maxlength="100">
                 <small style="color: #94a3b8; font-size: 0.85rem; display: block; margin-top: 0.25rem;">Establecimiento donde realizaste el gasto.</small>
@@ -86,5 +92,22 @@
             </div>
         </form>
     </div>
+    
+    <script>
+        // Cálculo dinámico del total con IVA
+        const inputSinIva = document.querySelector('input[name="valorTotalSinIVA"]');
+        const inputPorcentaje = document.querySelector('input[name="porcentajeIva"]');
+        const inputTotalConIva = document.getElementById('valorTotalConIva');
+
+        function calcularTotal() {
+            const sinIva = parseFloat(inputSinIva.value) || 0;
+            const porcentaje = parseFloat(inputPorcentaje.value) || 0;
+            const total = sinIva + (sinIva * (porcentaje / 100));
+            inputTotalConIva.value = total.toFixed(2);
+        }
+
+        inputSinIva.addEventListener('input', calcularTotal);
+        inputPorcentaje.addEventListener('input', calcularTotal);
+    </script>
 </body>
 </html>
