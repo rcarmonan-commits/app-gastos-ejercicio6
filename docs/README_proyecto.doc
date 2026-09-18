@@ -1,0 +1,73 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta charset="utf-8">
+    <title>Documentación del Proyecto</title>
+</head>
+<body style="font-family: Arial, sans-serif;">
+
+<h1 style="text-align: center;">Sistema de Gestión de Gastos - Ejercicio 6</h1>
+
+<h2>1. Descripción del Proyecto</h2>
+<p>Este proyecto es una aplicación web Java EE (Servlets y JSP) desarrollada bajo el patrón de arquitectura <strong>Modelo-Vista-Controlador (MVC)</strong>. Su objetivo principal es gestionar los gastos de usuarios, implementar distintos niveles de permisos (Administrador y Operador) y proveer reportes sobre la información.</p>
+<p><strong>Fechas de Desarrollo:</strong> 10 de Agosto al 17 de Agosto.</p>
+
+<h2>2. Desarrollo y Arquitectura</h2>
+
+<h3>2.1 Modelo-Vista-Controlador</h3>
+<p>La aplicación se estructuró dividiendo las responsabilidades para facilitar su escalabilidad:</p>
+<ul>
+    <li><strong>Modelo:</strong> Contiene las clases POJO (Usuario, Gasto, ConfiguracionSMTP) que representan las entidades del negocio, y las clases DAO (CRUDUsuario, CRUDGasto) encargadas de interactuar de forma segura con la base de datos usando PreparedStatement para prevenir inyecciones SQL.</li>
+    <li><strong>Vista:</strong> Todas las interfaces gráficas se construyeron en JSP y CSS nativo sin utilizar frameworks como Bootstrap (cumpliendo estrictamente el requerimiento). Se diseñó una interfaz responsiva y estética (colores limpios, tarjetas, y grillas nativas CSS).</li>
+    <li><strong>Controlador:</strong> Se implementaron Servlets (ServletAuth, ServletUsuario, ServletGasto) que reciben las peticiones HTTP (GET/POST), interactúan con la capa DAO, y redirigen a las Vistas correspondientes con la información extraída.</li>
+</ul>
+
+<h3>2.2 Funcionalidades Añadidas</h3>
+<ul>
+    <li><strong>CRUD Completo:</strong> Gestión total de Gastos y Usuarios.</li>
+    <li><strong>Roles y Permisos:</strong> Los usuarios registrados públicamente asumen el rol "Operador" por defecto, mientras que un "Administrador" puede eliminar, editar, o ver cualquier información.</li>
+    <li><strong>Campo Email:</strong> Se actualizó la estructura de la tabla usuarios y todos los flujos de la aplicación para guardar y administrar correos electrónicos, útiles para la funcionalidad de recuperación de contraseñas.</li>
+    <li><strong>Configuración SMTP Dinámica:</strong> Se creó un instalador (InstaladorBD) y un formulario SMTP exclusivo para administradores, evitando "quemar" claves de base de datos o correos en el código fuente.</li>
+</ul>
+
+<h2>3. Configuración</h2>
+
+<h3>3.1 Base de Datos (MySQL)</h3>
+<p>La base de datos fue diseñada mediante un archivo central schema.sql que crea las tres tablas principales:</p>
+<ul>
+    <li>usuarios</li>
+    <li>gastos</li>
+    <li>configuracion_smtp</li>
+</ul>
+<p>La conexión a la base de datos no está quemada en código; se implementó una clase GestorConfiguracion que crea y lee el archivo db_config.properties alojado en el entorno local del servidor.</p>
+
+<h3>3.2 Herramientas Utilizadas</h3>
+<ul>
+    <li><strong>Lenguaje:</strong> Java 17</li>
+    <li><strong>Construcción:</strong> Apache Maven (empaquetado .war)</li>
+    <li><strong>Servidor Web:</strong> Apache Tomcat 9</li>
+    <li><strong>Base de Datos:</strong> MySQL 8</li>
+</ul>
+
+<h2>4. Pruebas Realizadas</h2>
+<ol>
+    <li><strong>Registro e Inicio de Sesión:</strong> El sistema no permite el acceso a usuarios no registrados. Se valida el cifrado y correcta transferencia de la sesión mediante el objeto HttpSession.</li>
+    <li><strong>Validación de Roles:</strong> Se verificó que los botones de eliminar o configurar parámetros de servidor SMTP solo estuviesen visibles para el usuario admin.</li>
+    <li><strong>Manejo de Formularios CSS Nativo:</strong> Se probó la correcta distribución geométrica y el contraste de colores de los elementos (texto blanco sobre fondo secundario/oscuro) simulando una grilla Bootstrap mediante reglas propias en estilos.css.</li>
+    <li><strong>Modificación Estructural:</strong> La adición del campo email se probó desde el backend hasta el frontend (modificando la base de datos remotamente usando ALTER TABLE sin perder los datos previamente registrados).</li>
+</ol>
+
+<h2>5. Despliegue</h2>
+
+<h3>¿Dónde se desplegó?</h3>
+<p>El proyecto está alojado en el entorno de Hosting Platform-as-a-Service (PaaS) <strong>Alwaysdata</strong>.</p>
+
+<h3>¿Cómo se desplegó?</h3>
+<ol>
+    <li><strong>Empaquetado:</strong> Se utilizó el comando mvn clean package para compilar el código .java a bytecode y empaquetar la aplicación junto a sus vistas en un archivo app-gastos-ejercicio6-1.0-SNAPSHOT.war.</li>
+    <li><strong>WebDAV Automático:</strong> Se creó un script en PowerShell para conectarse directamente a las carpetas remotas de Alwaysdata vía el protocolo WebDAV.</li>
+    <li><strong>Alojamiento:</strong> El archivo .war fue subido al directorio /www y renombrado como ROOT.war para que Tomcat lo tomara como aplicación principal.</li>
+    <li><strong>Despliegue Dinámico:</strong> Alwaysdata cuenta con la propiedad unpackWARs="true". Al reiniciar el servicio desde el panel de control, Tomcat desempaquetó automáticamente el .war y publicó los cambios en tiempo real.</li>
+</ol>
+
+</body>
+</html>
